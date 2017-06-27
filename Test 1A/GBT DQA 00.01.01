@@ -1,0 +1,13 @@
+'''
+DATA QUALITY AND ANALYSIS - TEST (1A) 00.01.01
+
+This script will run around every second, checking whether the
+Green Bank Telescope (GBT) is SLEWING, pulling the most recent
+raw data while input/output (i/o) to the nodes is not heavily taxed.
+
+Run Location: BL-Head Node
+Run Frequency: 1 per second
+Conditions: If 'ant_motion' status is 'Slewing'
+Actions: Pull newest raw data, create plots/diagnose
+Actions Location: BL Compute Nodes >> User Directory
+'''
