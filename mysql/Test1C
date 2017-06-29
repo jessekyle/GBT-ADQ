@@ -42,7 +42,7 @@ SOURCE = subprocess.check_output("./show_mysql_source")
 print("SOURCE: " + SOURCE.strip("\n") + "\n")
 
 RA = subprocess.check_output("./show_mysql_ra")
-print("RA: " + RA.strip("\n") + "\n")
+print("RA: " + RA.strip("(RA), \n") + "\n")
 
 DEC = subprocess.check_output("./show_mysql_dec")
-print("DEC: " + DEC.strip("\n") + "\n")
+print("DEC: " + DEC.strip("(Dec), \n") + "\n")
