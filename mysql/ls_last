@@ -1,4 +1,4 @@
 #! /bin/bash
 
-for h in blc{0..7}; do ssh $h 'ls -ltr /datax/dibas/AGBT16A_999_*/GUPPI/?/ | tail -1' ; done
+for h in blc{0..7}; do ssh $h 'ls -ltr /datax/dibas/AGBT17A_999_*/GUPPI/?/ | tail -1' ; done
 
