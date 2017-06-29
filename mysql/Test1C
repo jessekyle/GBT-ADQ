@@ -1,0 +1,48 @@
+#! /usr/bin/env python
+
+import subprocess
+
+Ant = subprocess.check_output("./show_mysql_ant")
+#uses a SQL query to check ant_motion
+
+print("\n")
+
+if Ant.strip("\n") == "Stopped":
+	print("Dish is stopped." + "\n")
+	stopped = subprocess.check_output("./ls_last")
+	print(stopped)
+elif Ant.strip("\n") == "Slewing":
+	print("Dish is slewing." + "\n")
+	slewing = subprocess.check_output("./ls_last")
+	print(slewing)
+	#[1]strip the slewing results to contain only the raw file name
+	#[2]create a new (bl_raw_wf.rb -d /tmp/hello.png/png some_raw_data_file.raw) bash script
+	#enter [1] into [2] to generate a plot to a location (/tmp/filename.png from [2])
+		
+else:
+	print("Dish is " + Ant.lower().strip("\n") + "\n")
+
+UTC = subprocess.check_output("./show_mysql_utc")
+print("UTC: " + UTC.strip("\n") + "\n")
+
+DATE = subprocess.check_output("./show_mysql_date")
+print("DATE: " + DATE.strip("\n") + "\n")
+
+DATA = subprocess.check_output("./show_mysql_data")
+print("DIRECTORY: " + DATA.strip("\n") + "\n")
+
+REMAINING = subprocess.check_output("./show_mysql_remaining")
+print("TIME REMAINING: " + REMAINING.strip("\n") + "\n")
+
+LENGTH = subprocess.check_output("./show_mysql_scan_length")
+print("SCAN LENGTH: " + LENGTH.strip("\n") + "\n") 
+#what units is this in?
+
+SOURCE = subprocess.check_output("./show_mysql_source")
+print("SOURCE: " + SOURCE.strip("\n") + "\n")
+
+RA = subprocess.check_output("./show_mysql_ra")
+print("RA: " + RA.strip("\n") + "\n")
+
+DEC = subprocess.check_output("./show_mysql_dec")
+print("DEC: " + DEC.strip("\n") + "\n")
