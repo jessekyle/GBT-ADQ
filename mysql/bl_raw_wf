@@ -1,0 +1,3 @@
+#! /bin/bash
+
+for h in blc0{0..7}; do ssh $h 'ls /datax/dibas/AGBT17A_999_*/GUPPI/*/ | for x in tail -1; do bl_raw_wf.rb -d /home/jkyle/GBT-ADQ/mysql/PNG/test.png/png /datax/dibas/AGBT17A_999_*/GUPPI/*/$x' ; done

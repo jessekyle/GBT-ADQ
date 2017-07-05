@@ -15,7 +15,9 @@ elif Ant.strip("\n") == "Slewing":
 	print("Dish is slewing." + "\n")
 	slewing = subprocess.check_output("./ls_last")
 	print(slewing)
-	#[1]strip the slewing results to contain only the raw file name
+	while slewing:
+		for x in slewing:	
+			subprocess.check_output("bl_raw_wf.rb -d /tmp/test.png/png" + slewing)
 	#[2]create a new (bl_raw_wf.rb -d /tmp/hello.png/png some_raw_data_file.raw) bash script
 	#enter [1] into [2] to generate a plot to a location (/tmp/filename.png from [2])
 		
