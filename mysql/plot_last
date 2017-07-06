@@ -8,4 +8,4 @@ bl_raw_wf.rb -d /home/jkyle/GBT-ADQ/mysql/PNG/$host/${justname}.png/png $file
 
 #add mv command here to rename any stored file
 
-for i in /home/jkyle/GBT-ADQ/mysql/PNG/$host/*; do mv "$i." "$i.png"; done
+for i in /home/jkyle/GBT-ADQ/mysql/PNG/$host/*; do mv "$i" "$i.png"; done
