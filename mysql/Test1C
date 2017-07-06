@@ -23,6 +23,7 @@ elif Ant.strip("\n") == "Slewing":
 		
 else:
 	print("Dish is " + Ant.lower().strip("\n") + "\n")
+	other = subprocess.check_output("./ls_last")
 
 UTC = subprocess.check_output("./show_mysql_utc")
 print("UTC: " + UTC.strip("\n") + "\n")
