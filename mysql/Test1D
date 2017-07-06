@@ -1,0 +1,28 @@
+#! /usr/bin/env python
+
+import subprocess
+
+Ant = subprocess.check_output("./show_mysql_ant")
+#uses a SQL query to check ant_motion
+
+print("\n")
+
+if Ant.strip("\n") == "Stopped":
+	print("Dish is stopped." + "\n")
+	stopped = subprocess.call("./bl_raw_test")
+	print(stopped)
+elif Ant.strip("\n") == "Slewing":
+	print("Dish is slewing." + "\n")
+	slewing = subprocess.call("./bl_raw_test")
+	print(slewing)
+#	while slewing:
+#		for x in slewing:	
+#			subprocess.check_output("bl_raw_wf.rb -d /tmp/test.png/png" + slewing)
+	#[2]create a new (bl_raw_wf.rb -d /tmp/hello.png/png some_raw_data_file.raw) bash script
+	#enter [1] into [2] to generate a plot to a location (/tmp/filename.png from [2])
+		
+else:
+	print("Dish is " + Ant.lower().strip("\n") + "\n")
+	other = subprocess.call("./bl_raw_test")
+	print(other)
+
