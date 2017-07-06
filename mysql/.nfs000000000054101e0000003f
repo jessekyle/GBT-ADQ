@@ -4,6 +4,6 @@ file=`ls -tr /datax/dibas/AGBT*_999_*/GUPPI/*/*gup*raw | tail -1`
 justname=`basename $file`
 host=`hostname`
 
-bl_raw_wf.rb -d /home/jkyle/GBT-ADQ/mysql/PNG/$host/"${justname}.png"/png $file
+bl_raw_wf.rb -d /home/jkyle/GBT-ADQ/mysql/PNG/$host/${justname}png/png $file
 
 
