@@ -18,11 +18,17 @@ import StringIO
 import glob
 
 output = StringIO.StringIO()
-node_path = glob.glob("/home/jkyle/GBT-ADQ/mysql/PNG/blc[0-7]/blc0*.png")
+node_path = glob.glob("/home/jkyle/GBT-ADQ/mysql/PNG/blc0*/*.png.png")
+#print(node_path)
 
 for i in node_path:
-    im = Image.open("node_path")
+    print(i)
+    path = (i.strip("/home/jkyle/GBT-ADQ/mysql/PNG/blc/, .raw.png.png"))
+    i_path = (path[3:])
+    print(i_path)
+    im = Image.open(i)
     im.save(output, format=im.format)
     r = redis.StrictRedis(host='104.196.249.7')
-    r.set('node_path', output.getvalue())
-    output.close()
+    r.set(i_path, output.getvalue())
+
+output.close()
