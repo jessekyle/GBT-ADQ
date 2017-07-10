@@ -1,0 +1,3 @@
+#! /bin/bash
+
+for i in test{00..07}; do redis-cli -h 104.196.249.7 --raw get '*guppi*' >$i.png; done
