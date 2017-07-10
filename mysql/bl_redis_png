@@ -1,0 +1,13 @@
+#! /usr/bin/python
+
+import Image
+import redis
+import StringIO
+
+output = StringIO.StringIO()
+im = Image.open("/home/jkyle/GBT-ADQ/mysql/PNG/blc02/blc02_guppi_57913_06198_DIAG_FRB150215_0011.0039.raw.p.png")
+im.save(output, format=im.format)
+
+r = redis.StrictRedis(host='104.196.249.7')
+r.set('imagedata', output.getvalue())
+output.close()
