@@ -16,6 +16,7 @@ import Image
 import redis
 import StringIO
 import glob
+import subprocess
 
 output = StringIO.StringIO()
 node_path = glob.glob("/home/jkyle/GBT-ADQ/mysql/PNG/blc0*/*.png.png")
@@ -30,5 +31,10 @@ for i in node_path:
     im.save(output, format=im.format)
     r = redis.StrictRedis(host='104.196.249.7')
     r.set(i_path, output.getvalue())
-
+    o_path = ("\'"+str(i_path)+"\'")
+    print(o_path)
+    filename = (str(i_path[:11]+".png"))
+    print(filename)
+    #subprocess.check_call(["redis-cli", "-h", "104.196.249.7", "--raw", "get", str(o_path), ">", str(filename)])
+    #print(test)
 output.close()
