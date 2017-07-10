@@ -1,13 +1,28 @@
 #! /usr/bin/python
 
+#import Image
+#import redis
+#import StringIO
+
+#output = StringIO.StringIO()
+#im = Image.open("/home/jkyle/GBT-ADQ/mysql/PNG/blc02/blc02_guppi_57936_17064_DIAG_PSR_J1935+1616_0001.0013..png")
+#im.save(output, format=im.format)
+
+#r = redis.StrictRedis(host='104.196.249.7')
+#r.set('imagedata', output.getvalue())
+#output.close()
+
 import Image
 import redis
 import StringIO
+import glob
 
 output = StringIO.StringIO()
-im = Image.open("/home/jkyle/GBT-ADQ/mysql/PNG/blc02/blc02_guppi_57913_06198_DIAG_FRB150215_0011.0039.raw.p.png")
-im.save(output, format=im.format)
+node_path = glob.glob("/home/jkyle/GBT-ADQ/mysql/PNG/blc[0-7]/blc0*.png")
 
-r = redis.StrictRedis(host='104.196.249.7')
-r.set('imagedata', output.getvalue())
-output.close()
+for i in node_path:
+    im = Image.open("node_path")
+    im.save(output, format=im.format)
+    r = redis.StrictRedis(host='104.196.249.7')
+    r.set('node_path', output.getvalue())
+    output.close()

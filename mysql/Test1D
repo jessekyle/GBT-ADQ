@@ -9,8 +9,8 @@ print("\n")
 
 if Ant.strip("\n") == "Stopped":
 	print("Dish is stopped." + "\n")
-#	stopped = subprocess.call("./bl_raw_test")
-#	print(stopped)
+	stopped = subprocess.call("./bl_raw_test")
+	print(stopped)
 elif Ant.strip("\n") == "Slewing":
 	print("Dish is slewing." + "\n")
 	slewing = subprocess.call("./bl_raw_test")
@@ -23,6 +23,6 @@ elif Ant.strip("\n") == "Slewing":
 		
 else:
 	print("Dish is " + Ant.lower().strip("\n") + "\n")
-#	other = subprocess.call("./bl_raw_test")
-#	print(other)
+	other = subprocess.call("./bl_raw_test")
+	print(other)
 
