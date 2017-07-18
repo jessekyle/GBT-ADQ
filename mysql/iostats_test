@@ -1,0 +1,6 @@
+#! /usr/bin/env python
+
+import subprocess
+
+check_io_stats = subprocess.call("./all_check_iostats")
+print(check_io_stats)

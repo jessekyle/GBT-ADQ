@@ -1,0 +1,6 @@
+#! /bin/csh
+
+foreach i (0 1 2 3 4 5 6 7)
+  echo blc$i
+  ssh blc$i 'iostat -xk 2 2 | grep "^sd" | tail -1'
+end

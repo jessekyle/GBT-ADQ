@@ -1,0 +1,114 @@
+#! /usr/bin/env python
+
+import subprocess
+
+Ant = subprocess.check_output("/home/jkyle/GBT-ADQ/mysql/show_mysql_ant")
+#uses a SQL query to check ant_motion
+
+print("\n<br>")
+
+if Ant.strip("\n") == "Stopped":
+	print("Dish is stopped." + "\n<br>")
+	stopped = subprocess.call("/home/jkyle/GBT-ADQ/mysql/bl_raw_test")
+	print(stopped)
+elif Ant.strip("\n") == "Slewing":
+	print("Dish is slewing." + "\n<br>")
+	slewing = subprocess.call("/home/jkyle/GBT-ADQ/mysql/bl_raw_test")
+	print(slewing)
+#	while slewing:
+#		for x in slewing:	
+#			subprocess.check_output("bl_raw_wf.rb -d /tmp/test.png/png" + slewing)
+	#[2]create a new (bl_raw_wf.rb -d /tmp/hello.png/png some_raw_data_file.raw) bash script
+	#enter [1] into [2] to generate a plot to a location (/tmp/filename.png from [2])
+		
+else:
+	print("Dish is " + Ant.lower().strip("\n") + "\n<br>")
+	other = subprocess.call("/home/jkyle/GBT-ADQ/mysql/bl_raw_test")
+	print(other)
+
+#if dish is slewing, call bl_raw_test (generate png of latest raw files)
+
+UTC = subprocess.check_output("/home/jkyle/GBT-ADQ/mysql/show_mysql_utc")
+print("UTC: " + UTC.strip("\n") + "\n<br>")
+#print time
+
+DATE = subprocess.check_output("/home/jkyle/GBT-ADQ/mysql/show_mysql_date")
+print("DATE: " + DATE.strip("\n") + "\n<br>")
+#print date
+
+DATA = subprocess.check_output("/home/jkyle/GBT-ADQ/mysql/show_mysql_data")
+print("DIRECTORY: " + DATA.strip("\n") + "\n<br>")
+#print directory of project
+
+REMAINING = subprocess.check_output("/home/jkyle/GBT-ADQ/mysql/show_mysql_remaining")
+print("TIME REMAINING: " + REMAINING.strip("\n") + "\n<br>")
+#print time remaining (likely seconds)
+
+LENGTH = subprocess.check_output("/home/jkyle/GBT-ADQ/mysql/show_mysql_scan_length")
+print("SCAN LENGTH: " + LENGTH.strip("\n") + "\n<br>")
+#what units is this in?
+
+SOURCE = subprocess.check_output("/home/jkyle/GBT-ADQ/mysql/show_mysql_source")
+print("SOURCE: " + SOURCE.strip("\n") + "\n<br>")
+#print catalog source of object
+
+RA = subprocess.check_output("/home/jkyle/GBT-ADQ/mysql/show_mysql_ra")
+#RA1 = float(RA.strip("(RA), \n"))
+#print("RA: " + str(RA1) + "\n")
+#currently printing RA in degrees, need to convert to HH:MM:SS
+
+DEC = subprocess.check_output("/home/jkyle/GBT-ADQ/mysql/show_mysql_dec")
+#DEC1 = float(DEC.strip("(Dec), \n"))
+#print("DEC: " + str(DEC1) + "\n")
+#printing decimal degrees
+
+
+
+#obtain file name of generated png, for each node, move png to REDIS 
+import Image
+import redis
+import StringIO
+import glob
+import subprocess
+
+#output = StringIO.StringIO()
+node_path = glob.glob("/home/jkyle/GBT-ADQ/mysql/PNG/blc0*/*.png*")
+#print path to each generated waterfall plot
+#ip_address = '104.199.127.246'
+
+for i in node_path:
+    #print(i)
+    #print("<br>")
+#prints path to verify, comment out or remove later
+    path = (i.strip("/home/jkyle/GBT-ADQ/mysql/PNG/blc/.raw.png*"))
+    i_path = (path[3:])
+    print(i_path)
+    print("<br>")
+print("==============================")
+#removes directory path to waterfall plot and file name extension
+#this is for storing to REDIS, and later for querying
+#to be changed to standard later
+    #im = Image.open(i)
+    #im.save(output, format=im.format)
+    #r = redis.StrictRedis(host=ip_address)
+    #r.set(i_path, output.getvalue())
+#saves .png to output to REDIS with name i_path (raw data name minus extensions)
+    #o_path = ("redis-cli -h " + str(ip_address) + " --raw get \'" + str(i_path) + "\' ")
+    #print(o_path)
+    #filename = (">" + str(i_path[:11] + ".png"))
+    #print(filename)
+    #subprocess.call(["redis-cli", "-h", "104.196.249.7", "--raw", "get", str(o_path), ">", str(filename)])
+    #subprocess.call([str(o_path), str(filename)])
+    #print("\n")
+#output.close()
+
+#currently this works, but can't use last command effectively with variables 
+
+#moving data to REDIS
+#import os
+
+#os.system("scp /home/jkyle/GBT-ADQ/mysql/test.png jkyle@104.199.127.246")
+
+
+
+
