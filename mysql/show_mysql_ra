@@ -1,3 +1,3 @@
 #! /bin/bash
 
-echo "select major from status;" | mysql -N -h gbtdata.gbt.nrao.edu -u gbtstatus --password=w3bqu3ry gbt_status
+echo "select j2000_major from status;" | mysql -N -h gbtdata.gbt.nrao.edu -u gbtstatus --password=w3bqu3ry gbt_status
