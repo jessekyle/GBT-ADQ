@@ -1,0 +1,3 @@
+#! /bin/bash
+
+bl_raw_wf.rb -d /home/jkyle/hello.png/png some_raw_data_file.raw

@@ -1,0 +1,7 @@
+#! /usr/bin/env python
+
+import subprocess
+import os
+
+os.system("python /home/jkyle/radec > /home/jkyle/sky.html")
+os.system("scp /home/jkyle/sky.html jkyle@104.199.127.246:/home/jkyle/public_html/VirtualSky")
