@@ -1,0 +1,3 @@
+#! /bin/bash
+
+echo "select az_actual from status;" | mysql -N -h gbtdata.gbt.nrao.edu -u gbtstatus --password=w3bqu3ry gbt_status

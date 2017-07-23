@@ -1,6 +1,12 @@
-#! /bin/csh
+#! /bin/bash
 
-foreach i (0 1 2 3 4 5 6 7)
-  echo blc$i
-  ssh blc$i 'iostat -xk 2 2 | grep "^sd" | tail -1'
-end
+#foreach i (0 1 2 3 4 5 6 7)
+#  echo blc$i
+#  ssh blc$i 'iostat -xk 2 2 | grep "^sd" | tail -1'
+#end
+
+for h in blc0{0..7}; do ssh $h;
+'device=`df | grep "/datax$" | awk '{print $1}' | sed 's/1//g' | awk -F/ '{print$NF}'`
+echo $device
+iostat -xk 2 2 | grep $device | tail -1
+iostat -xk 2 2 | grep $device | tail -1 | awk '{print $6,$7}''; done
