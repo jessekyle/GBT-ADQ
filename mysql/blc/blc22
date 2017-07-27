@@ -1,0 +1,3 @@
+#! /bin/bash
+ 
+for i in blc22; do ssh blc22 'printf 'blc22\ '; ls /datax/dibas/AGBT17A_999_*/GUPPI/*/ | tail -1  &'; done

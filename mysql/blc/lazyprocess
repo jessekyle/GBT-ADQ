@@ -1,0 +1,9 @@
+#! /bin/bash
+
+for h in BLC{30..37};
+do echo "
+$h = subprocess.check_output('/home/jkyle/GBT-ADQ/mysql/$h')
+print($h[0:5].strip('\n') + 'raw,host=' + $h[5:].strip('\n') + 
+	',region=us value=1')
+" >> /home/jkyle/Grafana ; done 
+
