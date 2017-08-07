@@ -1,0 +1,6 @@
+#! /bin/bash
+
+NODE=$1
+
+for h in $NODE; do ssh $h 'printf '$h\ '; ls /datax/dibas/AGBT17B_999_*/GUPPI/*/ | tail -1  &'; done
+
